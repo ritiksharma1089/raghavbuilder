@@ -1,15 +1,56 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { initFlowbite } from "flowbite";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBridgeLock } from '@fortawesome/free-solid-svg-icons';
 
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 export function Navbar() {
+
+
+ 
+
+
+
   useEffect(() => {
     initFlowbite();
   }, []);
+
+
+  const [Allprods, setAllprods] = useState<any>();
+
+    const [islogin,setislogin] = useState(false);
+
+    const logout=()=>{
+      if(islogin){
+        localStorage.removeItem("token");
+      }
+    }
+
+    useEffect(()=>{
+      const token = localStorage.getItem("token");
+      if(token){
+        setislogin(true)
+      }
+    },[])
+
+    useEffect(()=>{
+        const fetchallprod =async()=>{
+
+            try{
+                    const data = await axios.post(`http://127.0.0.1:8787/api/v1/products/blogs`);
+
+                    console.log(data.data)
+                    setAllprods(data.data.data);
+            }
+            catch(err){
+                    console.log("errror is ", err)
+            }
+        }
+        fetchallprod()
+    },[])
 
   return (
     <nav className="border-gray-200 bg-gray-400 sticky top-0 z-10">
@@ -57,6 +98,16 @@ export function Navbar() {
                 Home
               </Link>
             </li>
+            {islogin &&  <li>
+              <Link to="/dashboard"
+                
+                className="block py-2 px-3 text-white font-semibold rounded hover:bg-gray-300 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
+                aria-current="page"
+              >
+               Dashboard
+              </Link>
+            </li>}
+           
             <li>
               <button
                 id="dropdownNavbarLink"
@@ -73,54 +124,45 @@ export function Navbar() {
                 className="z-10 hidden font-normal rounded-lg shadow w-44 bg-gray-100 divide-y divide-gray-100"
               >
                 <ul className="py-2 text-sm text-gray-700" aria-labelledby="dropdownNavbarLink">
-                  <li>
-                    <Link to="/order/Rodi" className="block px-4 py-2 hover:bg-gray-400">
-                      Aggregate
-                    </Link>
-                  </li>
-                  <li>
-                    <Link to="/order/Bricks" className="block px-4 py-2 hover:bg-gray-400">
-                      Bricks
-                    </Link>
-                  </li>
-                  <li>
-                  <Link to="/order/Sand" className="block px-4 py-2 hover:bg-gray-400">
-                      Sand
-                    </Link>
-                  </li>
-                  <li>
-                  <Link to="/order/Dust" className="block px-4 py-2 hover:bg-gray-400">
-                      Dust
-                    </Link>
-                  </li>
-                  <li>
-                  <Link to="/order/Cement" className="block px-4 py-2 hover:bg-gray-400">
-                      Cement
-                    </Link>
-                  </li>
-                  <li>
-                  <Link to="/order/steel" className="block px-4 py-2 hover:bg-gray-400">
-                      Steel / TMT Bars
-                    </Link>
-                  </li>
+                 
+
+                  <div className="bg-slate-100">
+        {Array.isArray(Allprods)  ? (
+            
+          Allprods.map((item, index) => (
+            <li key={index}>
+            <Link to={`/order/${item.id}`} className="block px-4 py-2 hover:bg-gray-400">
+              {item.title}
+            </Link>
+          </li>
+          ))
+        ) : (
+           
+          <p>No data available... </p>
+        )}
+      
+       
+      </div>
+                 
                 </ul>
                 <div className="py-1">
                   <a
-                    href="#"
+                    href="/signin"
                     className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-400"
                   >
-                    Sign out
+                  <button onClick={()=>logout()}>{islogin ? "sign out":"sign in"}
+                    </button>  
                   </a>
                 </div>
               </div>
             </li>
-            <li>
+            {/* <li>
               <Link to="/order"
                 className="block py-2 px-3 text-white font-semibold rounded hover:bg-gray-300 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"
               >
                 Orders
               </Link>
-            </li>
+            </li> */}
             <li>
              <Link to="/About"
                 className="block py-2 px-3 text-white font-semibold rounded hover:bg-gray-300 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0"

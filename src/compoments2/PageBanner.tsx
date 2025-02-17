@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { CatPic } from "../assets/Catwisepic";
-import pic1 from "./../assets/aggregate.jpg";
+import pic1 from "./../assets/crousel4.webp";
 
 
 const PageBanner = ({category}:{category:string | undefined}) => {

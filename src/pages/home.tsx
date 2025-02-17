@@ -11,6 +11,7 @@ import Properties from '../compoments/properties'
 import Whatspp from '../compoments/Whatspp'
 import Social from '../compoments/social'
 import ProductCards from '../compoments2/New_card'
+import Homepageproducts from '../compoments2/Homepageproducts'
 
 const Home = () => {
   return (
@@ -21,7 +22,8 @@ const Home = () => {
 
       {/* <Card_palate/> */}
       <Title_pallate title='Our Products'/>
-      <ProductCards/>
+      {/* <ProductCards /> */}
+      <Homepageproducts/>
       <Features/>
       <Title_pallate title='Verified Customer Reviews'/>
       <Comment_palate/>

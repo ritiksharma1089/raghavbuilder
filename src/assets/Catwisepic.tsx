@@ -12,5 +12,5 @@ export const CatPic =[
     {category :"Sand", pic:pic3},
     {category :"Bricks", pic:pic4},
     {category :"Cement", pic:pic5},
-    {category :"steel", pic:pic6},
+    {category :"Steel/TMT Barss", pic:pic6},
 ]
