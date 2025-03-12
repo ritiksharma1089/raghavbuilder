@@ -1,5 +1,3 @@
-import AddProduct from "./AddProduct"
-
 
 const Admin_hero = () => {
   return (

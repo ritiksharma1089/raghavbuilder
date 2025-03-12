@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState } from "react"
 import { useNavigate } from "react-router-dom";
+import { BACKEND_URL } from "../config";
 
 
 
@@ -27,7 +28,7 @@ const Loginpage = () => {
 
 
             try{
-                const result = await axios.post('http://127.0.0.1:8787/api/v1/user/signin', signinform);
+                const result = await axios.post(`${BACKEND_URL}/user/signin`, signinform);
                 
 
                 console.log(result,"thisv is result of signin");

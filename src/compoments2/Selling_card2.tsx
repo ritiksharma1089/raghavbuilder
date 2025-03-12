@@ -1,8 +1,7 @@
 
 import { useState } from "react";
 import Fileget from "../Admin_comp/Fileget";
-import pic1 from "./../assets/bangur-new.jpg";
-import { Button } from "@material-tailwind/react";
+
 import { useNavigate } from "react-router-dom";
 // import { Product1 } from "../assets/products";
 

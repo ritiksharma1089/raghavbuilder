@@ -2,6 +2,7 @@ import  { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Update from '../Admincpmp2/Update'
 import axios from 'axios'
+import { BACKEND_URL } from '../config'
 
 const ModifyPage = () => {
     const {prod_id} = useParams()
@@ -13,7 +14,7 @@ const ModifyPage = () => {
       console.log('this is fetchprod');
       try {
         const response = await axios.get(
-          `http://127.0.0.1:8787/api/v1/products/product/${prod_id}`
+          `${BACKEND_URL}/products/product/${prod_id}`
         );
         setsingleprod(response.data);
       } catch (err) {

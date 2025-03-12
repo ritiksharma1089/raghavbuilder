@@ -2,6 +2,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { BACKEND_URL } from '../config';
 
 const Card2 = ({product}:any) => {
 
@@ -11,7 +12,7 @@ const Card2 = ({product}:any) => {
     const fetchFile = async () => {
       try {
         // Fetch the image as a blob
-        const response = await axios.get(`http://127.0.0.1:8787/api/v1/images/file/${product.imgsrc}`, {
+        const response = await axios.get(`${BACKEND_URL}/images/file/${product.imgsrc}`, {
           responseType: 'blob', // Specify the response type as Blob
         });
 

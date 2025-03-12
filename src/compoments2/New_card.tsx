@@ -21,17 +21,17 @@ const getRandomTailwindColor = () => {
   return colors[randomIndex];
 };
 
-const getRandomColor = () => {
-  const base = 200; // Minimum value for RGB to ensure it's light
-  const range = 56; // Range to keep colors in the faded zone
-  const getColorComponent = () => Math.floor(base + Math.random() * range).toString(16).padStart(2, '0');
+// const getRandomColor = () => {
+//   const base = 200; // Minimum value for RGB to ensure it's light
+//   const range = 56; // Range to keep colors in the faded zone
+//   const getColorComponent = () => Math.floor(base + Math.random() * range).toString(16).padStart(2, '0');
   
-  const red = getColorComponent();
-  const green = getColorComponent();
-  const blue = getColorComponent();
+//   const red = getColorComponent();
+//   const green = getColorComponent();
+//   const blue = getColorComponent();
   
-  return `#${red}${green}${blue}`;
-};
+//   return `#${red}${green}${blue}`;
+// };
 
 
 

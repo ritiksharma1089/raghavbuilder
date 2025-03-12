@@ -6,11 +6,17 @@ import { faBridgeLock } from '@fortawesome/free-solid-svg-icons';
 
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { BACKEND_URL } from "../config";
+
+
 
 export function Navbar() {
-
+  
+  const backendUrl = BACKEND_URL
+  
 
  
+
 
 
 
@@ -40,7 +46,9 @@ export function Navbar() {
         const fetchallprod =async()=>{
 
             try{
-                    const data = await axios.post(`http://127.0.0.1:8787/api/v1/products/blogs`);
+                    const data = await axios.post(`${backendUrl}/products/blogs`);
+
+                    // console.log(process.env.BACKEND_URL , "thsi is url")
 
                     console.log(data.data)
                     setAllprods(data.data.data);

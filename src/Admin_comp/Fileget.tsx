@@ -1,5 +1,6 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
+import { BACKEND_URL } from '../config';
 
 type filegettype ={
   imagekey:string,
@@ -13,7 +14,7 @@ const Fileget = ({imagekey,setimage}:filegettype,) => {
     const fetchFile = async () => {
       try {
         // Fetch the image as a blob
-        const response = await axios.get(`http://127.0.0.1:8787/api/v1/images/file/${imagekey}`, {
+        const response = await axios.get(`${BACKEND_URL}/images/file/${imagekey}`, {
           responseType: 'blob', // Specify the response type as Blob
         });
 
@@ -38,7 +39,7 @@ const Fileget = ({imagekey,setimage}:filegettype,) => {
         URL.revokeObjectURL(myimage);
       }
     };
-  }, []); // Empty dependency array to run effect only once
+  }, [imagekey]); // Empty dependency array to run effect only once
 
   return (
     <div>

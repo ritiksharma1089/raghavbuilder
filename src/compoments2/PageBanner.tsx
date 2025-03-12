@@ -12,6 +12,9 @@ const PageBanner = ({category}:{category:string | undefined}) => {
 
           setpic(finalitem[0].pic)
       }
+      else{
+        setpic(pic1)
+      }
     },[category])
   return (
     <div>

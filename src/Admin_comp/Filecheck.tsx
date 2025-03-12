@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BACKEND_URL } from '../config';
 
 const FileUpload = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null); // State to hold the selected file
@@ -23,7 +24,7 @@ const FileUpload = () => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await axios.post('http://127.0.0.1:8787/api/v1/images/upload', formData, {
+      const response = await axios.post(`${BACKEND_URL}/images/upload`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data', // Set multipart/form-data
         },

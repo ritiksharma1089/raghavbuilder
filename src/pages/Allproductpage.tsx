@@ -1,25 +1,21 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import Fileget from '../Admin_comp/Fileget';
+import { useEffect, useState } from 'react'
+
 import Selling_card2 from '../compoments2/Selling_card2';
-import Update from '../Admincpmp2/Update';
+import { BACKEND_URL } from '../config';
+
 
 const Allproductpage = () => {
 
 
     const [Allprods, setAllprods] = useState<any>();
 
-    // const updatefunc=async(prod_id:string)=>{
-    //     console.log("update call",prod_id);
-
-    //     <Update prod_id={prod_id} />
-    // }
-
+   
     useEffect(()=>{
         const fetchallprod =async()=>{
 
             try{
-                    const data = await axios.post(`http://127.0.0.1:8787/api/v1/products/blogs`);
+                    const data = await axios.post(`${BACKEND_URL}/products/blogs`);
 
                     console.log(data.data)
                     setAllprods(data.data.data);

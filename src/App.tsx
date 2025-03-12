@@ -2,7 +2,7 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Navbar } from './compoments/Navbar'
 import "./App.css"
-import Card_palate from './compoments/Card_palate'
+
 import Home from './pages/home'
 
 import Order from './pages/Order'
@@ -30,7 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/About" element={<Aboutus/>} />
-          <Route path="/order" element={<Card_palate />} />
+        
           <Route path="/contacts" element={<Contact/>} />
           <Route path="/signin" element={<Loginpage/>} />
           <Route path="/order/:id" element={<Order/>} />

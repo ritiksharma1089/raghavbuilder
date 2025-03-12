@@ -1,7 +1,8 @@
 import axios from 'axios';
 import  { useState } from 'react';
-import Fileget from './Fileget';
+
 import Deleteproduct from './Deleteproduct';
+import { BACKEND_URL } from '../config';
 
 const Getproduct = ({prod_id}:{prod_id:string}) => {
   const [singleprod, setsingleprod] = useState<any>();
@@ -10,7 +11,7 @@ const Getproduct = ({prod_id}:{prod_id:string}) => {
     console.log('this is fetchprod');
     try {
       const response = await axios.get(
-        `http://127.0.0.1:8787/api/v1/products/product/${prod_id}`
+        `${BACKEND_URL}/products/product/${prod_id}`
       );
       setsingleprod(response.data);
     } catch (err) {

@@ -1,6 +1,7 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import Fileget from './Fileget';
+import  { useEffect, useState } from 'react'
+
+import { BACKEND_URL } from '../config';
 
 const Dashboarddata = () => {
 
@@ -14,7 +15,7 @@ const Dashboarddata = () => {
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.post('http://127.0.0.1:8787/api/v1/products/blogs'); // Specify expected response type
+          const response = await axios.post(`${BACKEND_URL}/products/blogs`); // Specify expected response type
           setDemadata(response.data.data); // Set fetched data
           console.log('Fetched data:', response.data.data[0]);
   

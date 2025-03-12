@@ -4,6 +4,7 @@ import NumInp_label from './Numinputlabel';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import uploadarea from "./../assets/upload_area.svg";
+import { BACKEND_URL } from '../config';
 const AddProduct = () => {
   const Navigate = useNavigate();
   const [allowSubmit, setAllowSubmit] = useState(false);
@@ -33,7 +34,7 @@ const AddProduct = () => {
     
         try {
           
-          const response = await axios.post('http://127.0.0.1:8787/api/v1/images/upload', formData, {
+          const response = await axios.post(`${BACKEND_URL}/images/upload`, formData, {
             headers: {
               'Content-Type': 'multipart/form-data', // Set multipart/form-data
             },
@@ -67,7 +68,7 @@ const AddProduct = () => {
         try {
 
           const token = localStorage.getItem("token");
-          const response = await axios.post('http://127.0.0.1:8787/api/v1/products/new', body, {
+          const response = await axios.post(`${BACKEND_URL}/products/new`, body, {
             headers: {
               Authorization: token, // Replace with actual token
               'Content-Type': 'application/json',
@@ -75,8 +76,9 @@ const AddProduct = () => {
           });
       
           console.log('Response: this is response id ', response.data);
-          alert("data added to backend")
-          Navigate('/dashboard');
+          alert("data added to backend");
+          Navigate("/")
+          // Navigate('/dashboard');
 
         } catch (error) {
           console.error('Error submitting form:', error);

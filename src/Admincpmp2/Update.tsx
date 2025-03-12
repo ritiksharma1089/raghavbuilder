@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, {  useState } from 'react'
 import Inp_label from '../Admin_comp/inp_label'
 
 import axios from 'axios';
 import Deleteproduct from '../Admin_comp/Deleteproduct';
 import { useNavigate } from 'react-router-dom';
+import { BACKEND_URL } from '../config';
 
 const Update = ({prod_id,product}:{prod_id:string, product:any}) => {
 
@@ -32,7 +33,7 @@ const Navigate = useNavigate()
         try {
 
       const token = localStorage.getItem("token")
-          const response = await axios.put('http://127.0.0.1:8787/api/v1/products/update', body, {
+          const response = await axios.put(`${BACKEND_URL}/products/update`, body, {
             headers: {
               Authorization: token, // Replace with actual token
               'Content-Type': 'application/json',
